@@ -1,0 +1,33 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript S.O.L.I.D.</title>
+<script src="solid.js"></script> 
+</head>
+<body>
+
+<div id = "divAreaShowHTML"></div>
+<div id = "divAreaShowJSON"></div>
+<div id = "divVolumeShowHTML"></div>
+<div id = "divVolumeShowJSON"></div>
+
+<script>
+
+const shapes = [ circle(2), square(3) ];
+const solids = [ cubo(4) ];
+
+const areas  = areaCalculator(shapes);
+const output = sumCalculatorOputter(areas);
+const volume = volumeCalculator(solids);
+const output2 = sumCalculatorOputter(volume);
+
+document.getElementById("divAreaShowHTML").innerHTML = output.toHtml();
+document.getElementById("divAreaShowJSON").innerHTML = output.toJson();
+document.getElementById("divVolumeShowHTML").innerHTML = output2.toHtml();
+document.getElementById("divVolumeShowJSON").innerHTML = output2.toJson();
+
+</script>
+
+</body>
+</html> 
+

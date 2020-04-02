@@ -1,0 +1,22 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript S.O.L.I.D.</title>
+<script src="Solid.js"></script> 
+</head>
+<body>
+
+<div id="divShow"></div>
+
+<script>
+    const shapes = [ 
+        circle(3), 
+        square(4) 
+    ];
+    const areas = areaCalculator(shapes);
+    document.getElementById("divShow").innerHTML = areas.output();
+</script>
+
+</body>
+</html> 
+

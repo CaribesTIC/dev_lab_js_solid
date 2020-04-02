@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript S.O.L.I.D.</title>
+<script>
+    const AutomovilInterface = (obj) => ({
+        type: 'AutomovilInterface',
+        getTipo: () => obj.getTipo(),
+        setMarca: (args) => obj.setMarca(args)
+    })
+
+    const Coche = (marca = 'Generico') => {
+        const proto = { 
+            marca: marca,
+            getTipo : () => { return "Coche " + proto.marca},
+            setMarca : (args) => { proto.marca = args }
+        }
+        const basics = AutomovilInterface(proto);
+        const composite = Object.assign({} , basics);
+        return Object.assign(Object.create(composite), {marca});
+    }
+
+    const Moto = (marca = 'Generica') => {
+        const proto = { 
+            marca: marca,
+            getTipo : () => { return "Moto " + proto.marca},
+            setMarca : (args) => { proto.marca = args }
+        }
+        const basics = AutomovilInterface(proto);
+        const composite = Object.assign({} , basics);
+        return Object.assign(Object.create(composite), {marca});
+    }
+</script>
+</head>
+<body>
+
+<h2>JavaScript Interface</h2>
+
+<script>
+    let oCoche = Coche();
+    console.log(oCoche.getTipo());
+    oCoche = Coche('Toyota');   
+    console.log(oCoche.getTipo());
+    oCoche.setMarca('Ford');
+    console.log(oCoche.getTipo());
+    oMoto = Moto();    
+    console.log(oMoto.getTipo());
+    oMoto = Moto('Suzuky');
+    console.log(oMoto.getTipo());  
+    oMoto.setMarca('Yamaha'); 
+    console.log(oMoto.getTipo());
+</script>
+</body>
+</html> 

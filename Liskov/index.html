@@ -1,0 +1,29 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript S.O.L.I.D.</title>
+<script src="Solid.js"></script> 
+</head>
+<body>
+
+<div id = "divShowHtml"></div>
+<div id = "divShowJson"></div>
+
+<script>
+
+const shapes = [ 
+    circle(3), 
+    square(4) 
+];
+
+const areas  = areaCalculator(shapes);
+const output = sumCalculatorOputter(areas);
+
+document.getElementById("divShowHtml").innerHTML = output.toHtml();
+document.getElementById("divShowJson").innerHTML = output.toJson();
+
+</script>
+
+</body>
+</html> 
+
