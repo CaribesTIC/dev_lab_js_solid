@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript</h2>
+<script>
+//https://diego.com.es/clases-abstractas-en-php
+    
+    const AbstractClass = function () { // esta es nuestra clase abstracta
+        if (this.constructor === AbstractClass) {
+            throw new Error('No se puede instanciar la clase abstracta');
+        }
+    };
+    
+    AbstractClass.prototype.someMethod = function () { // este es nuestro método abstracto
+        throw new Error('No se puede llamar al método abstracto')
+    };
+    
+    const ConcreteClass = function () { // esta es nuestra clase concreta
+        AbstractClass.apply(this, arguments);
+    };
+
+    // heredemos de la clase abstracta
+    ConcreteClass.prototype = Object.create(AbstractClass.prototype, {
+        'constructor': ConcreteClass
+    });
+
+    var obj;
+
+    try {
+        obj = new AbstractClass(); // throws
+    } catch (e) {
+        console.log(e); // salidas 'No se puede instanciar la clase abstracta'
+    }
+
+    obj = new ConcreteClass();
+
+    try {
+        obj.someMethod(); // throws
+    } catch (e) {
+        console.log(e); // salidas 'No se puede llamar al método abstracto'
+    }
+
+    // definamos nuestro método concreto
+    ConcreteClass.prototype.someMethod = function () {
+        console.log('Método Concreto');
+    };
+
+    // N.B esto proporcionará el método a las instancias existentes ya que son el mismo prototipo
+
+    obj.someMethod(); // salidas 'Método Concreto'
+</script>
+
+</body>
+</html>
+
